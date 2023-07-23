@@ -50,7 +50,7 @@ export const blogPlugin = plugin(
       ".dark": {
         "--background": "220, 43%, 11%",
         "--foreground": "213 31% 91%",
-        "--muted": "223 47% 11%",
+        "--muted": "240 3.7% 15.9%",
         "--muted-foreground": "215.4 16.3% 56.9%",
         "--accent": "216 34% 17%",
         "--accent-foreground": "210 40% 98%",

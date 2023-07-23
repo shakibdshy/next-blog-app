@@ -1,54 +1,27 @@
 "use client"
 
-import { Github } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Icons } from "@/components/icons"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { SignIn } from "@clerk/nextjs"
 
-export default function SignIn() {
+export default function SignInComponents() {
   return (
-    <Card>
-      <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">Sign In</CardTitle>
-        <CardDescription>
-          Enter your email below to sign in your account
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="grid gap-4">
-        <div className="grid grid-cols-2 gap-6">
-          <Button variant="outline">
-            <Github className="mr-2 h-4 w-4" />
-            Github
-          </Button>
-          <Button variant="outline">
-            <Icons.google className="mr-2 h-4 w-4" />
-            Google
-          </Button>
-        </div>
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background text-muted-foreground px-2">
-              Or continue with
-            </span>
-          </div>
-        </div>
-        <div className="grid gap-2">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" />
-        </div>
-        <div className="grid gap-2">
-          <Label htmlFor="password">Password</Label>
-          <Input id="password" type="password" />
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">Sing in</Button>
-      </CardFooter>
-    </Card>
+    <div className="container mx-auto flex justify-center p-5">
+      <SignIn
+        appearance={{
+          elements: {
+            card: "rounded-lg border border-solid border-border bg-card text-card-foreground shadow-sm",
+            headerTitle: "text-lg font-semibold text-card-foreground",
+            headerSubtitle: "text-muted-foreground",
+            socialButtonsIconButton: "border border-solid border-border text-input",
+            dividerLine: "border border-solid border-border",
+            dividerText: "text-card-foreground",
+            formFieldLabel: "text-card-foreground",
+            formFieldInput: "flex h-10 w-full rounded-md border border-input bg-background text-muted-foreground px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+            footerActionText: "text-muted-foreground",
+            footerActionLink: "text-card-foreground",
+            formButtonPrimary: "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-10 py-2 px-4"
+          }
+        }}
+      />
+    </div>
   )
 }

@@ -3,7 +3,7 @@
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -11,6 +11,8 @@ import { Modal } from "@/components/ui/modal"
 import { CustomTabs } from "@/components/ui/tab"
 import SignIn from "@/components/user-auth/signin"
 import SignUp from "@/components/user-auth/signup"
+import { SignedIn, SignedOut } from '@clerk/nextjs/app-beta/client'
+import { SignInButton, UserButton } from "@clerk/nextjs"
 
 const tabsList = [
   { name: "Sign in", value: "signIn" },
@@ -29,18 +31,28 @@ export function SiteHeader() {
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
         <MainNav items={siteConfig.mainNav} />
         <div className="flex flex-1 items-center justify-end space-x-4">
-          <div className="flex- items-center gap-4">
-            <Modal
-              title="Sign in"
-              titleClassName={buttonVariants({ variant: "default", className: 'hover:text-primary-foreground' })}
-              render={
-                <CustomTabs
-                  defaultValue="signIn"
-                  tabsList={tabsList}
-                  tabsContent={tabsContent}
-                />
-              }
-            />
+          <div className="flex items-center gap-4">
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
+            <SignedOut>
+              {/* <SignInButton mode='modal'>
+                <Button>
+                  Sign in
+                </Button>
+              </SignInButton> */}
+              <Modal
+                title="Sign in"
+                titleClassName={buttonVariants({ variant: "default", className: 'hover:text-primary-foreground' })}
+                render={
+                  <CustomTabs
+                    defaultValue="signIn"
+                    tabsList={tabsList}
+                    tabsContent={tabsContent}
+                  />
+                }
+              />
+            </SignedOut>
           </div>
           <div className="flex items-center space-x-1">
             <Link
