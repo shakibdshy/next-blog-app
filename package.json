@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "private": true,
   "scripts": {
+    "clean": "rimraf \"{.next,node_modules,.cache}\"",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -41,6 +42,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.2",
+    "rimraf": "^5.0.1",
     "sharp": "^0.31.3",
     "svix": "^1.7.0",
     "tailwind-merge": "^1.13.2",
