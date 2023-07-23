@@ -5,19 +5,23 @@ import { NavItem } from "@/types/nav"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
+import { useBreakpoint } from "@/hooks/usebreakpoints"
+import { Menu } from "lucide-react"
 
 interface MainNavProps {
   items?: NavItem[]
 }
 
 export function MainNav({ items }: MainNavProps) {
+  const breakpoint = useBreakpoint();
+  const isMobile = ['sm'].includes(breakpoint);
   return (
-    <div className="flex gap-6 md:gap-10">
+    <div className="flex w-full justify-between gap-6 md:gap-10">
       <Link href="/" className="flex items-center space-x-2">
         <Icons.logo className="h-6 w-6" />
         <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
-      {items?.length ? (
+      {!isMobile && items?.length ? (
         <nav className="flex gap-6">
           {items?.map(
             (item, index) =>
@@ -35,7 +39,7 @@ export function MainNav({ items }: MainNavProps) {
               )
           )}
         </nav>
-      ) : null}
+      ) : <Menu />}
     </div>
   )
 }
