@@ -37,7 +37,6 @@ async function handler(req: Request) {
 
   if (eventType === "user.created" || eventType === "user.updated") {
     const { id, ...attributes } = event.data
-    console.log('user', id, attributes)
 
     await client.user.upsert({
       where: { externalId: id as string },
