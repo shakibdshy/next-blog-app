@@ -7,7 +7,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuShortcut
-} from "./ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 import { Github } from "lucide-react";
 import { redirect } from "next/navigation";
 
