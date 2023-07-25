@@ -9,35 +9,24 @@ import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Modal } from "@/components/ui/modal"
 import { CustomTabs } from "@/components/ui/tab"
-import SignIn from "@/components/user-auth/signin"
-import SignUp from "@/components/user-auth/signup"
 import { SignedIn, SignedOut } from '@clerk/nextjs/app-beta/client'
 import { useUser } from "@clerk/nextjs"
-import { Dropdown } from "./ui/dropdown"
-import { ProfileDropdown } from "./profile-dropdown"
+import { Dropdown } from "./dropdown/dropdown"
+import { ProfileDropdown } from "./dropdown/profile-dropdown"
 import { useBreakpoint } from "@/hooks/usebreakpoints"
-
-const tabsList = [
-  { name: "Sign in", value: "signIn" },
-  { name: "Sign up", value: "signUp" },
-]
-
-const tabsContent = [
-  { value: "signIn", render: <SignIn /> },
-  { value: "signUp", render: <SignUp /> },
-]
+import { tabsContent, tabsList } from "@/config/tab-content"
 
 export function SiteHeader() {
   const { user } = useUser();
   const breakpoint = useBreakpoint();
-  const isMobile = ['sm'].includes(breakpoint);
+  const isMobile = ['lg', 'xl', '2xl', '3xl', '4xl'].includes(breakpoint);
 
   return (
     <header className="bg-background sticky top-0 z-40 w-full border-b">
-      <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+      <div className="container flex h-16 items-center space-x-4 px-4 sm:justify-between sm:space-x-0">
         <MainNav items={siteConfig.mainNav} />
         {
-          !isMobile && (
+          isMobile && (
             <div className="flex flex-1 items-center justify-end space-x-4">
               <div className="flex items-center space-x-1">
                 <Link
@@ -45,7 +34,7 @@ export function SiteHeader() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <div
+                  <span
                     className={buttonVariants({
                       size: "icon",
                       variant: "ghost",
@@ -53,7 +42,7 @@ export function SiteHeader() {
                   >
                     <Icons.gitHub className="h-5 w-5" />
                     <span className="sr-only">GitHub</span>
-                  </div>
+                  </span>
                 </Link>
                 <ThemeToggle />
               </div>
@@ -90,8 +79,7 @@ export function SiteHeader() {
               </div>
             </div>
           )
-        }
-        
+        }        
       </div>
     </header>
   )

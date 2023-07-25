@@ -8,18 +8,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { DropdownProps } from "@/types"
 
-interface DropdownProps {
-  title?: string,
-  image?: string,
-  titleClassName?: string,
-  imageClassName?: string,
-  variant: "text" | "image",
-  className?: string,
-  render?: React.ReactNode
-}
-
-export function Dropdown({ variant = "image", title, image, imageClassName, titleClassName, className, render }: DropdownProps) {
+export function Dropdown({ variant = "image", title, image, icon, imageClassName, titleClassName, className, render }: DropdownProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -35,9 +26,15 @@ export function Dropdown({ variant = "image", title, image, imageClassName, titl
             </Avatar>
           </Button>
           :
-          <Button className={cn(titleClassName)}>{title}</Button>
+          variant === "icon"
+            ?
+            <Button variant="ghost">
+              {icon}
+            </Button>
+            :
+            <Button className={cn(titleClassName)}>{title}</Button>
         }
-        
+
       </DropdownMenuTrigger>
       <DropdownMenuContent className={cn("w-56", className)}>
         {render}
