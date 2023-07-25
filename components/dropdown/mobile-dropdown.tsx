@@ -13,20 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { cn } from "@/lib/utils";
 import { Modal } from "@/components/ui/modal"
 import { CustomTabs } from "@/components/ui/tab"
-// import { tabsContent, tabsList } from "@/config/tab-content";
-
-import SignIn from "@/components/user-auth/signin"
-import SignUp from "@/components/user-auth/signup"
-
-export const tabsList = [
-  { name: "Sign in", value: "signIn" },
-  { name: "Sign up", value: "signUp" },
-]
-
-export const tabsContent = [
-  { value: "signIn", render: <SignIn /> },
-  { value: "signUp", render: <SignUp /> },
-]
+import { tabsContent, tabsList } from "@/config/tab-content";
 
 export default function MobileMenuDropdown() {
   const { signOut } = useClerk();
