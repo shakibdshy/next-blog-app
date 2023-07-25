@@ -5,11 +5,11 @@ import { SignedIn, SignedOut } from '@clerk/nextjs/app-beta/client'
 import { Github, LogOut } from "lucide-react";
 import { redirect } from "next/navigation";
 import { siteConfig } from "@/config/site";
-import { SheetHeader, SheetTitle, SheetClose } from "../ui/sheet";
-import { Button, buttonVariants } from "../ui/button";
+import { SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import { Icons } from "../icons";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Icons } from "@/components/icons";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { Modal } from "@/components/ui/modal"
 import { CustomTabs } from "@/components/ui/tab"

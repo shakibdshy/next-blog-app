@@ -32,6 +32,7 @@ model Post {
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
   title      String
+  slug       String
   content    String?
   image      String
   published  Boolean    @default(false)
@@ -45,6 +46,7 @@ model Post {
 model Category {
   id    Int    @id @default(autoincrement())
   name  String
+  slug  String
   posts Post[]
 }
 

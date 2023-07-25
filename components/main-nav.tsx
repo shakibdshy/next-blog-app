@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { Menu } from "lucide-react"
 import { useBreakpoint } from "@/hooks/usebreakpoints"
-import MobileMenuDropdown from "./dropdown/mobile-dropdown"
-import OffCanvasMenu from "./dialog/offcanves-menu"
+import MobileMenuDropdown from "@/components/dialog/mobile-offcanves"
+import OffCanvasMenu from "@/components/dialog/offcanves-menu"
 
 interface MainNavProps {
   items?: NavItem[]

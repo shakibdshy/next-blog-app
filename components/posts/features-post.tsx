@@ -1,8 +1,11 @@
-"use client"
+import PostCard from "./post-card"
+
 
 function FeaturesPost() {
   return (
-    <div>FeaturesPost</div>
+    <>
+      <PostCard variant="grid" />
+    </>
   )
 }
 
