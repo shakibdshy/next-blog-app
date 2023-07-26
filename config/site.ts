@@ -1,3 +1,5 @@
+import { routes } from "./routes"
+
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
@@ -20,6 +22,28 @@ export const siteConfig = {
     {
       title: "Pricing",
       href: "/",
+    },
+  ],
+  dashboardMenu: [
+    {
+      title: "Dashboard",
+      href: routes.DASHBOARD,
+    },
+    {
+      title: "Profile",
+      href: routes.PROFILE,
+    },
+    {
+      title: "Post",
+      href: routes.POST,
+    },
+    {
+      title: "Billing",
+      href: routes.BILLING,
+    },
+    {
+      title: "Settings",
+      href: routes.SETTINGS,
     },
   ],
   links: {

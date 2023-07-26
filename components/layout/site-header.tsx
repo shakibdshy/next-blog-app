@@ -5,16 +5,16 @@ import Link from "next/link"
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
-import { MainNav } from "@/components/main-nav"
+import { MainNav } from "@/components/layout/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Modal } from "@/components/ui/modal"
 import { CustomTabs } from "@/components/ui/tab"
 import { SignedIn, SignedOut } from '@clerk/nextjs/app-beta/client'
 import { useUser } from "@clerk/nextjs"
-import { Dropdown } from "./dropdown/dropdown"
-import { ProfileDropdown } from "./dropdown/profile-dropdown"
 import { useBreakpoint } from "@/hooks/usebreakpoints"
 import { tabsContent, tabsList } from "@/config/tab-content"
+import { Dropdown } from "@/components/dropdown/dropdown"
+import { ProfileDropdown } from "@/components/dropdown/profile-dropdown"
 
 export function SiteHeader() {
   const { user } = useUser();

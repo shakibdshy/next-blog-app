@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Github } from "lucide-react";
 import { redirect } from "next/navigation";
+import { siteConfig } from "@/config/site";
+import Link from "next/link";
 
 export function ProfileDropdown() {
   const { signOut } = useClerk();
@@ -34,18 +36,13 @@ export function ProfileDropdown() {
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
-        <DropdownMenuItem>
-          Profile
-          <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          Billing
-          <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          Settings
-          <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-        </DropdownMenuItem>
+        {
+          siteConfig.dashboardMenu.map((item, index) => (
+            <DropdownMenuItem key={index}>
+              <Link href={item.href}>{item.title}</Link>
+            </DropdownMenuItem>
+          ))
+        }
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
