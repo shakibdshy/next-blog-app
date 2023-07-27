@@ -28,22 +28,27 @@ export const siteConfig = {
     {
       title: "Dashboard",
       href: routes.DASHBOARD,
+      icon: "homeIcon",
     },
     {
       title: "Profile",
       href: routes.PROFILE,
+      icon: "profileIcon",
     },
     {
       title: "Post",
       href: routes.POST,
+      icon: "postIcon",
     },
     {
       title: "Billing",
       href: routes.BILLING,
+      icon: "billingIcon",
     },
     {
       title: "Settings",
       href: routes.SETTINGS,
+      icon: "settingsIcon",
     },
   ],
   links: {
