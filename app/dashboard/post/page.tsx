@@ -5,6 +5,8 @@ import PostCreateButton from "@/components/posts/post-create-button";
 async function page() {
   const { posts } = await getAllPostsAction()
 
+  console.log('posts', posts)
+
   if(!posts) return null;
 
   return (
