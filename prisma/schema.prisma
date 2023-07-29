@@ -9,7 +9,7 @@ datasource db {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
+  id         String   @id @default(cuid())
   externalId String   @unique
   attributes Json
   createdAt  DateTime @default(now())
@@ -20,33 +20,33 @@ model User {
 }
 
 model Profile {
-  id     Int     @id @default(autoincrement())
+  id     String  @id @default(cuid())
   image  String?
   bio    String
-  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId Int     @unique
+  user   User    @relation(fields: [userId], references: [externalId], onDelete: Cascade)
+  userId String  @unique
 }
 
 model Post {
-  id         Int        @id @default(autoincrement())
+  id         String     @id @default(cuid())
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
   title      String
-  slug       String
-  content    String?
-  image      String
+  slug       String?    @unique
+  content    Json?
+  image      String?
   published  Boolean    @default(false)
-  author     User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  authorId   Int
+  author     User?      @relation(fields: [authorId], references: [externalId], onDelete: Cascade)
+  authorId   String?    
   categories Category[]
 
   @@index([authorId])
 }
 
 model Category {
-  id    Int    @id @default(autoincrement())
-  name  String
-  slug  String
+  id    Int     @id @default(autoincrement())
+  name  String?
+  slug  String? @unique
   posts Post[]
 }
 

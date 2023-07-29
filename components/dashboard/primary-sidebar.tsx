@@ -11,7 +11,7 @@ function PrimarySidebar() {
   const path = usePathname()
 
   return (
-    <aside className='border-border sticky left-0 top-0 w-56 border-r border-solid px-3 py-6'>
+    <aside className='border-border sticky left-0 top-0 w-56 border-r border-solid px-3'>
       <nav className='flex flex-col gap-4'>
         {
           siteConfig.dashboardMenu.map((item) => {

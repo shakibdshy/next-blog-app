@@ -26,11 +26,9 @@ interface DashboardLayoutProps {
 export default function RootLayout({ children }: DashboardLayoutProps) {
   return (
     <>
-      <div className="container mx-auto px-0">
-        <div className="flex gap-6">
-          <PrimarySidebar />
-          <div className="flex-1">{children}</div>
-        </div>
+      <div className="container mx-auto mt-6 flex gap-6 px-0">
+        <PrimarySidebar />
+        <div className="flex-1">{children}</div>
       </div>
     </>
   )
