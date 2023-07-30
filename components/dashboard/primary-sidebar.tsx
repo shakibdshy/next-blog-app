@@ -18,7 +18,7 @@ function PrimarySidebar() {
             // @ts-ignore
             const Icon = Icons[item.icon || "arrowRight"]
             return (
-              <Link href={item.href} className={cn("hover:bg-primary hover:text-primary-foreground flex h-10 items-center rounded-md px-4 py-2 text-sm font-semibold tracking-wider transition-all", path === item.href ? "bg-primary text-primary-foreground" : "")}>
+              <Link key={item.href} href={item.href} className={cn("hover:bg-primary hover:text-primary-foreground flex h-10 items-center rounded-md px-4 py-2 text-sm font-semibold tracking-wider transition-all", path === item.href ? "bg-primary text-primary-foreground" : "")}>
                 <Icon className="mr-2 h-4 w-4" />
                 {item.title}
               </Link>

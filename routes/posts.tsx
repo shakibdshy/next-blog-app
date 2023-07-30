@@ -44,11 +44,13 @@ export async function getPosts() {
   }
 }
 
-export async function findFirstPost() { 
+export async function findFirstPost(id: string) {
   const user = await currentUser()
+
   try {
-    const post = await client.post.findFirst({
+    const post = await client.post.findUnique({
       where: {
+        id,
         authorId: user?.id
       }
     })
@@ -74,23 +76,26 @@ export async function createPost() {
   }
 }
 
-// export async function updatePost({ id, title, content, published }: Post) {
-//   try {
-//     const post = await client.post.update({
-//       where: {
-//         id,
-//       },
-//       data: {
-//         title,
-//         content,
-//         published,
-//       },
-//     })
-//     return { post }
-//   } catch (error) {
-//     return { error }
-//   }
-// }
+export async function updatePost({ id, title, content }: { id: string, title: string, content: any }) {
+  const user = await currentUser()
+
+  try {
+    const post = await client.post.update({
+      where: {
+        id,
+      },
+      data: {
+        title,
+        content,
+        authorId: user?.id
+      }
+    })
+    console.log('post', post)
+    return { post }
+  } catch (error) {
+    return { error }
+  }
+}
 
 export async function delatePost(id: string) {
   const user = await currentUser()
@@ -103,7 +108,7 @@ export async function delatePost(id: string) {
       },
     })
     return { post }
-  } catch (error) { 
+  } catch (error) {
     return { error }
   }
 }

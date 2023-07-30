@@ -1,6 +1,6 @@
 'use server'
 
-import { createPost, delatePost, getPosts } from "@/routes/posts"
+import { createPost, delatePost, findFirstPost, getPosts, updatePost } from "@/routes/posts"
 import { Post } from "@prisma/client"
 
 export async function getAllPostsAction() {
@@ -10,6 +10,17 @@ export async function getAllPostsAction() {
 
 export async function createPostAction() {
   const post = await createPost()
+
+  return post
+}
+
+export async function getPostAction(id: string) {
+  const post = await findFirstPost(id)
+  return post
+}
+
+export async function getPostUpdateAction({ id, title, content }: Post) {
+  const post = await updatePost({ id, title, content })
 
   return post
 }
