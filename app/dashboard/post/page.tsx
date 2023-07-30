@@ -1,11 +1,12 @@
 import { getAllPostsAction } from "@/app/action/post-action";
 import NoPostFound from "@/components/posts/no-post-found"
 import PostCreateButton from "@/components/posts/post-create-button";
+import Link from "next/link";
+import dayjs from "dayjs";
+import PostOperations from "@/components/posts/post-operations";
 
 async function page() {
   const { posts } = await getAllPostsAction()
-
-  console.log('posts', posts)
 
   if(!posts) return null;
 
@@ -22,7 +23,22 @@ async function page() {
         posts?.length ? (
           <div className="divide-border divide-y rounded-md border">
             {posts?.map((post) => (
-              <p>{post.title}</p>
+              <div className="flex items-center justify-between p-4">
+                <div className="grid gap-1">
+                  <Link
+                    href={`/dashboard/post/${post?.id}`}
+                    className="font-semibold hover:underline"
+                  >
+                    {post.title}
+                  </Link>
+                  <div>
+                    <p className="text-muted-foreground text-sm">
+                      {dayjs(post.createdAt).format("MMM DD, YYYY")}
+                    </p>
+                  </div>
+                </div>
+                <PostOperations id={post?.id} />
+              </div>
             ))}
           </div>
         ) : (
